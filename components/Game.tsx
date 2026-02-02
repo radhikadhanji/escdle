@@ -131,10 +131,11 @@ export default function Game() {
           setInput("");
           if (input == song.title || input == song.id) {
             addCorrectGuess(input);
+            setFinalGuesses(nextGuesses.length);
             setCorrect(true);
             saveResult(true, nextGuesses.length);
             updateLastGame();
-          } else if (guesses.length + 1 >= 5) {
+          } else if (guesses.length >= 5) {
             addIncorrectGuess(input);
             saveResult(false, nextGuesses.length);
             updateLastGame();
