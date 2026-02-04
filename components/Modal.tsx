@@ -31,13 +31,16 @@ export default function Modal({ isVisible, onClose }: ModalProps) {
               <p>
                 Your goal is to guess the title of the Eurovision song within 5
                 guesses. Each time you guess incorrectly, more of the song will
-                be revealed. Inspired by Heardle.
+                be revealed. Click on the icon at the top right to check your
+                statistics. Inspired by Heardle.
               </p>
 
               <p className="font-bold">
                 Titles are not case sensitive unless made up of multiple words,
                 e.g. Cha Cha Cha and cha cha cha are both valid guesses, but Cha
-                cha Cha is not.
+                cha Cha is not. Do not include accents in your guesses, e.g.
+                guess Roa instead of Róa. Support for accented guesses will be
+                added in a later update.
               </p>
 
               <p>
@@ -49,7 +52,7 @@ export default function Modal({ isVisible, onClose }: ModalProps) {
                 className="font-bold underline"
                 onClick={() => setView("updates")}
               >
-                v1 - view update logs here
+                v1.1 - view update logs here
               </button>
             </>
           )}
@@ -57,6 +60,16 @@ export default function Modal({ isVisible, onClose }: ModalProps) {
           {view == "updates" && (
             <>
               <p className="font-bold text-xl text-center">Update Logs</p>
+              <p>
+                v1.1: Added endless mode: you can now practise forever. Added
+                statistics for daily guesses (endless mode does not affect
+                statistics). Fixed minor bugs with UI, allowing too many
+                incorrect guesses, and added a pause icon. Moved song hosting to
+                Soundcloud to scale future song additions easier. Unfortunately,
+                using the Soundcloud API has led to the bug where songs only
+                properly play after 2-3 clicks, which I am working to fix. 17
+                new songs were added.
+              </p>
               <p>
                 v1: Released with 16 songs. The making of this game will be
                 documented on my blog soon.

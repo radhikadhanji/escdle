@@ -2,7 +2,9 @@
 
 import { useEffect, useState } from "react";
 import MusicPlayer from "@/components/MusicPlayer";
+import Statistics from "@/components/Statistics";
 import { songs } from "@/data/songs";
+import { recordGame } from "@/data/stats";
 
 export default function Game() {
   const [guesses, setGuesses] = useState<string[]>([]);
@@ -13,10 +15,15 @@ export default function Game() {
   const [playedToday, setPlayedToday] = useState(false);
   const [timeLeft, setTimeLeft] = useState<string>("");
   const [finalGuesses, setFinalGuesses] = useState<number | null>(null);
+  const [showStats, setShowStats] = useState(false);
   const inputDisabled = revealed || correct || playedToday;
   const START = new Date("2026-01-01");
+  type GameMode = "daily" | "endless";
+  const [mode, setMode] = useState<GameMode>("daily");
 
   useEffect(() => {
+    if (mode !== "daily") return;
+
     const today = new Date().toDateString();
     const lastPlay = localStorage.getItem("lastPlayDate");
     const savedResult = localStorage.getItem("currentResult");
@@ -25,41 +32,22 @@ export default function Game() {
 
     if (lastPlay === today && savedResult) {
       setPlayedToday(true);
-
       const result = JSON.parse(savedResult);
       setFinalGuesses(result.guesses);
-      if (result.correct) {
-        setCorrect(true);
-      } else {
-        setRevealed(true);
-      }
+      result.correct ? setCorrect(true) : setRevealed(true);
     }
-  }, []);
+  }, [mode]);
 
   useEffect(() => {
-    if (!playedToday) return;
+    if (mode !== "daily" || !playedToday) return;
     setTimeLeft(calculateTime());
     const interval = setInterval(() => {
       setTimeLeft(calculateTime());
     }, 1000);
     return () => clearInterval(interval);
-  }, [playedToday]);
+  }, [mode, playedToday]);
 
   if (!song) return null;
-
-  function addIncorrectGuess(input: string) {
-    const newGuess = document.createElement("div");
-    newGuess.innerHTML = `❌ ${input}`;
-    newGuess.classList.add("mt-2", "text-red-600");
-    document.getElementById("container")?.appendChild(newGuess);
-  }
-
-  function addCorrectGuess(input: string) {
-    const newGuess = document.createElement("div");
-    newGuess.innerHTML = `✅ ${input}`;
-    newGuess.classList.add("mt-2", "text-green-600");
-    document.getElementById("container")?.appendChild(newGuess);
-  }
 
   function updateLastGame() {
     const now = new Date().toDateString();
@@ -104,15 +92,68 @@ export default function Game() {
     return songs[dayIndex % songs.length];
   }
 
+  function getEndlessSong(excludeId?: string) {
+    let next;
+    do {
+      next = songs[Math.floor(Math.random() * songs.length)];
+    } while (next.id === excludeId);
+    return next;
+  }
+
+  function pickSong(prevId?: string) {
+    return mode === "daily" ? getDailySong() : getEndlessSong(prevId);
+  }
+
+  function resetGame(nextSong?: (typeof songs)[number]) {
+    setGuesses([]);
+    setRevealed(false);
+    setCorrect(false);
+    setFinalGuesses(null);
+    setInput("");
+    setSong(nextSong ?? pickSong(song?.id));
+  }
+
   return (
     <div className="w-full max-w-md p-6 text-center">
-      <h1 className="text-3xl font-bold mb-4">escdle</h1>
+      <button
+        className="fixed top-8 right-10 p-4"
+        onClick={() => setShowStats(true)}
+      >
+        <img src="stats.png"></img>
+      </button>
+      <Statistics isVisible={showStats} onClose={() => setShowStats(false)} />
+      <div className="p4 mb-10">
+        Disclaimer: There is an issue currently where it takes 2-3 clicks of the
+        play button to actually play the song instead of just one. I am in the
+        process of fixing this.
+      </div>
+      <div id="title">
+        <h1 className="text-3xl font-bold mb-4">
+          escdle {mode === "endless" && "(endless mode)"}
+        </h1>
+      </div>
 
       <div className="mb-6">
         <MusicPlayer guessCount={guesses.length} song={song} />
       </div>
 
-      <div id="container"></div>
+      <div id="container">
+        {guesses.map((guess, index) => {
+          const isCorrect = guess === song.title || guess === song.id;
+
+          return (
+            <div
+              key={index}
+              className={`mt-2 ${
+                isCorrect ? "text-green-600" : "text-red-600"
+              }`}
+            >
+              {isCorrect ? "✅" : "❌"} {guess}
+            </div>
+          );
+        })}
+      </div>
+
       <input
         type="text"
         placeholder="Enter your guess here"
@@ -130,23 +171,51 @@ export default function Game() {
           setGuesses(nextGuesses);
           setInput("");
           if (input == song.title || input == song.id) {
-            addCorrectGuess(input);
             setFinalGuesses(nextGuesses.length);
             setCorrect(true);
-            saveResult(true, nextGuesses.length);
-            updateLastGame();
-          } else if (guesses.length >= 5) {
-            addIncorrectGuess(input);
-            saveResult(false, nextGuesses.length);
-            updateLastGame();
+            if (mode === "daily") {
+              saveResult(true, nextGuesses.length);
+              recordGame(true, nextGuesses.length);
+              updateLastGame();
+            }
+          } else if (guesses.length + 1 >= 5) {
+            if (mode === "daily") {
+              saveResult(false, nextGuesses.length);
+              recordGame(false, nextGuesses.length);
+              updateLastGame();
+            }
             setRevealed(true);
-          } else {
-            addIncorrectGuess(input);
           }
         }}
       >
         submit
+        <br />
       </button>
+
+      {mode === "daily" && (
+        <a
+          className="mt-4 font-bold p-2 outline"
+          onClick={() => {
+            setMode("endless");
+            setPlayedToday(false);
+            resetGame(getEndlessSong());
+          }}
+        >
+          switch to endless mode
+        </a>
+      )}
+
+      {mode === "endless" && (
+        <a
+          className="mt-4 font-bold p-2 outline"
+          onClick={() => {
+            setMode("daily");
+            resetGame(getDailySong());
+          }}
+        >
+          switch to daily mode
+        </a>
+      )}
 
       {revealed && (
         <p className="mt-4 text-red-600">
@@ -163,6 +232,15 @@ export default function Game() {
           {" - "}
           {song.country} {song.year}{" "}
         </p>
+      )}
+
+      {mode === "endless" && (correct || revealed) && (
+        <a
+          className="text-white-600 font-bold underline"
+          onClick={() => resetGame()}
+        >
+          Another song?
+        </a>
       )}
 
       {playedToday && (

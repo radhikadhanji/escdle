@@ -5,7 +5,7 @@ export const songs = [
         artist: "Loreen",
         year: 2012,
         country: "Sweden",
-        audio: "/audio/euphoria.mp3"
+        audio: "https://soundcloud.com/loreen-official/euphoria"
     },
     {
         id: "cha cha cha",
@@ -13,7 +13,7 @@ export const songs = [
         artist: "Käärijä",
         year: 2023,
         country: "Finland",
-        audio: "/audio/chachacha.mp3"
+        audio: "https://soundcloud.com/kaarija-music/cha-cha-cha"
     },
     {
         id: "shum",
@@ -21,7 +21,7 @@ export const songs = [
         artist: "Go/A",
         year: 2021,
         country: "Ukraine",
-        audio: "/audio/shum.mp3"
+        audio: "https://soundcloud.com/go_a/shum"
     },
     {
         id: "stefania",
@@ -29,7 +29,7 @@ export const songs = [
         artist: "Kalush Orchestra",
         year: 2022,
         country: "Ukraine",
-        audio: "/audio/stefania.mp3"
+        audio: "https://soundcloud.com/kalush-orchestra/stefania-1"
     },
     {
         id: "voila",
@@ -37,7 +37,7 @@ export const songs = [
         artist: "Barbara Pravi",
         year: 2021,
         country: "France",
-        audio: "/audio/voila.mp3"
+        audio: "https://soundcloud.com/barbarapraviofficial/voila"
     },
     {
         id: "teresa & maria",
@@ -45,7 +45,7 @@ export const songs = [
         artist: "Alyona Alyona and Jerry Heil",
         year: 2024,
         country: "Ukraine",
-        audio: "/audio/teresa&maria.mp3"
+        audio: "https://soundcloud.com/jerryheil-sc/teresa-maria-splno-z-alyona-alyona"
     },
     {
         id: "kant",
@@ -53,7 +53,7 @@ export const songs = [
         artist: "Miriana Conte",
         year: 2025,
         country: "Malta",
-        audio: "/audio/kant.mp3"
+        audio: "https://soundcloud.com/sasha-890546998/serving-kant-miriana-conte"
     },
     {
         id: "la noia",
@@ -61,7 +61,7 @@ export const songs = [
         artist: "Angelina Mango",
         year: 2024,
         country: "Italy",
-        audio: "/audio/lanoia.mp3"
+        audio: "https://soundcloud.com/angelinamango/la-noia"
     },
     {
         id: "zitti e buoni",
@@ -69,7 +69,7 @@ export const songs = [
         artist: "Måneskin",
         year: 2021,
         country: "Italy",
-        audio: "/audio/zittiebuoni.mp3"
+        audio: "https://soundcloud.com/maneskin/zitti-e-buoni"
     },
     {
         id: "voyage",
@@ -77,7 +77,7 @@ export const songs = [
         artist: "Zoë Më",
         year: 2025,
         country: "Switzerland",
-        audio: "/audio/voyage.mp3"
+        audio: "https://soundcloud.com/zoeme/voyage"
     },
     {
         id: "zjerm",
@@ -85,7 +85,7 @@ export const songs = [
         artist: "Shkodra Elektronike",
         year: 2025,
         country: "Albania",
-        audio: "/audio/zjerm.mp3"
+        audio: "https://soundcloud.com/shkodraelektronike-music/zjerm"
     },
     {
         id: "nan",
@@ -93,7 +93,7 @@ export const songs = [
         artist: "Alis",
         year: 2026,
         country: "Albania",
-        audio: "/audio/nan.mp3"
+        audio: "https://soundcloud.com/alis88161/nan"
     },
     {
         id: "bara bada bastu",
@@ -101,7 +101,7 @@ export const songs = [
         artist: "KAJ",
         year: 2025,
         country: "Sweden",
-        audio: "/audio/barabadabastu.mp3"
+        audio: "https://soundcloud.com/kaj103781/bara-bada-bastu"
     },
     {
         id: "tavo akys",
@@ -109,7 +109,7 @@ export const songs = [
         artist: "Katarsis",
         year: 2025,
         country: "Lithuania",
-        audio: "/audio/tavoakys.mp3"
+        audio: "https://soundcloud.com/derfkos/katarsis-tavo-akys-eurovision"
     },
     {
         id: "igranka",
@@ -117,7 +117,7 @@ export const songs = [
         artist: "Who See",
         year: 2013,
         country: "Montenegro",
-        audio: "/audio/igranka.mp3"
+        audio: "https://soundcloud.com/who-see-official/igranka"
     },
     {
         id: "la poupee monte le son",
@@ -125,6 +125,142 @@ export const songs = [
         artist: "Laura Thorn",
         year: 2025,
         country: "Luxembourg",
-        audio: "/audio/lapoupeemonteleson.mp3"
+        audio: "https://soundcloud.com/milena-lukyanova/la-poupee-monte-le-son"
+    },
+    {
+        id: "doomsday blue",
+        title: "Doomsday Blue",
+        artist: "Bambie Thug",
+        year: 2024,
+        country: "Ireland",
+        audio: "https://soundcloud.com/alisokso-swag/bambie-thug-doomsday-blue-mp3"
+    },
+    {
+        id: "zari",
+        title: "Zari",
+        artist: "Marina Satti",
+        year: 2024,
+        country: "Greece",
+        audio: "https://soundcloud.com/marinasattiofficial/zari"
+    },
+    {
+        id: "wild dances",
+        title: "Wild Dances",
+        artist: "Ruslana",
+        year: 2004,
+        country: "Ukraine",
+        audio: "https://soundcloud.com/ruslana-official/wild-dances"
+    },
+    {
+        id: "roa",
+        title: "Roa",
+        artist: "VAEB",
+        year: 2025,
+        country: "Iceland",
+        audio: "https://soundcloud.com/vaeb-music/roa"
+    },
+    {
+        id: "nova zora",
+        title: "Nova Zora",
+        artist: "Tamara Živković",
+        year: 2026,
+        country: "Montenegro",
+        audio: "https://soundcloud.com/tamarazivkovic/nova-zora"
+    },
+    {
+        id: "discoteque",
+        title: "Discoteque",
+        artist: "The Roop",
+        year: 2021,
+        country: "Lithuania",
+        audio: "https://soundcloud.com/theroop-music/discoteque"
+    },
+    {
+        id: "who the hell is edgar",
+        title: "Who The Hell Is Edgar?",
+        artist: "Teya and Salena",
+        year: 2023,
+        country: "Austria",
+        audio: "https://soundcloud.com/whothehellisteya/who-the-hell-is-edgar"
+    },
+    {
+        id: "lighter",
+        title: "Lighter",
+        artist: "Kyle Alessandro",
+        year: 2025,
+        country: "Norway",
+        audio: "https://soundcloud.com/kylealessandro/lighter"
+    },
+    {
+        id: "ulveham",
+        title: "Ulveham",
+        artist: "Gåte",
+        year: 2024,
+        country: "Norway",
+        audio: "https://soundcloud.com/gate37822/ulveham"
+    },
+    {
+        id: "space man",
+        title: "Space Man",
+        artist: "Sam Ryder",
+        year: 2022,
+        country: "UK",
+        audio: "https://soundcloud.com/samryderlondon/space-man"
+    },
+    {
+        id: "sound of silence",
+        title: "Sound of Silence",
+        artist: "Dami Im",
+        year: 2016,
+        country: "Australia",
+        audio: "https://soundcloud.com/damiimofficial/sound-of-silence"
+    },
+    {
+        id: "1944",
+        title: "1944",
+        artist: "Jamala",
+        year: 2016,
+        country: "Ukraine",
+        audio: "https://soundcloud.com/jamala/1944a1"
+    },
+    {
+        id: "viva moldova",
+        title: "Viva Moldova",
+        artist: "Satoshi",
+        year: 2026,
+        country: "Moldova",
+        audio: "https://soundcloud.com/onlyfunforyou/satoshi-viva-moldova"
+    },
+    {
+        id: "poison cake",
+        title: "Poison Cake",
+        artist: "Marco Bošnjak",
+        year: 2025,
+        country: "Croatia",
+        audio: "https://soundcloud.com/derfkos/marko-bo-njak-poison-cake"
+    }, 
+    {
+        id: "jako",
+        title: "Jako",
+        artist: "Ladaniva",
+        year: 2024,
+        country: "Armenia",
+        audio: "https://soundcloud.com/ladaniva-music/jako"
+    },
+    {
+        id: "the voice",
+        title: "The Voice",
+        artist: "Eimear Quinn",
+        year: 1996,
+        country: "Ireland",
+        audio: "https://soundcloud.com/eimear-quinn-official/the-voice"
+    },
+    {
+        id: "dum tek tek",
+        title: "Dum Tek Tek",
+        artist: "Hadise",
+        year: 2009,
+        country: "Turkey",
+        audio: "https://soundcloud.com/hadise-sc/duem-tek-tek"
     }
 ];

@@ -1,39 +1,92 @@
 "use client";
-
-import { useRef } from "react";
-import { songs } from "@/data/songs";
-
-type MusicPlayerProps = {
-  guessCount: number;
-  song: {
-    id: string;
-    title: string;
-    artist: string;
-    year: number;
-    country: string;
-    audio: string;
-  };
-};
+import { useEffect, useRef, useState } from "react";
+declare global {
+  interface Window {
+    SC: any;
+  }
+}
+type MusicPlayerProps = { guessCount: number; song: { audio: string } };
 
 export default function MusicPlayer({ guessCount, song }: MusicPlayerProps) {
-  const audioRef = useRef<HTMLAudioElement>(null);
-  const durations = [3, 6, 9, 15, 20];
+  const iframeRef = useRef<HTMLIFrameElement>(null);
+  const widgetRef = useRef<any>(null);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [widgetReady, setWidgetReady] = useState(false);
 
-  const playSnippet = () => {
-    if (!audioRef.current) return;
-    const duration = durations[Math.min(guessCount, durations.length - 1)];
-    audioRef.current.currentTime = 0;
-    audioRef.current.play();
+  const durations = [2, 4, 8, 10, 20];
 
-    setTimeout(() => {
-      audioRef.current?.pause();
-    }, duration * 1000);
+  useEffect(() => {
+    if (!iframeRef.current || !window.SC) return;
+
+    setWidgetReady(false);
+    setIsPlaying(false);
+
+    const widget = window.SC.Widget(iframeRef.current);
+    widgetRef.current = widget;
+
+    widget.load(song.audio, {
+      auto_play: false,
+    });
+
+    widget.bind(window.SC.Widget.Events.READY, () => {
+      setWidgetReady(true);
+    });
+
+    widget.bind(window.SC.Widget.Events.PLAY, () => {
+      setIsPlaying(true);
+    });
+
+    widget.bind(window.SC.Widget.Events.PAUSE, () => {
+      setIsPlaying(false);
+    });
+
+    return () => {
+      widget.unbind(window.SC.Widget.Events.READY);
+      widget.unbind(window.SC.Widget.Events.PLAY);
+      widget.unbind(window.SC.Widget.Events.PAUSE);
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    };
+  }, [song.audio]);
+
+  const togglePlay = () => {
+    if (!widgetReady || !widgetRef.current) return;
+
+    if (isPlaying) {
+      widgetRef.current.pause();
+      setIsPlaying(false);
+
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+        timeoutRef.current = null;
+      }
+    } else {
+      const duration = durations[Math.min(guessCount, durations.length - 1)];
+
+      widgetRef.current.seekTo(0);
+      widgetRef.current.play();
+      setIsPlaying(true);
+
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+      timeoutRef.current = setTimeout(() => {
+        widgetRef.current.pause();
+        setIsPlaying(false);
+        timeoutRef.current = null;
+      }, duration * 1000);
+    }
   };
+
   return (
     <div>
-      <audio ref={audioRef} src={song.audio} preload="auto"></audio>
-      <button onClick={playSnippet}>
-        <img src="play.png" alt="Play" />
+      <iframe
+        ref={iframeRef}
+        style={{ display: "none" }}
+        allow="autoplay"
+        src="https://w.soundcloud.com/player/?auto_play=false"
+      />
+
+      <button onClick={togglePlay} disabled={!widgetReady}>
+        <img src={isPlaying ? "/pause.png" : "/play.png"} alt="Play/Pause" />
       </button>
     </div>
   );
