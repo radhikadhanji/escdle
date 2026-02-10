@@ -52,7 +52,7 @@ export default function Modal({ isVisible, onClose }: ModalProps) {
                 className="font-bold underline"
                 onClick={() => setView("updates")}
               >
-                v1.1 - view update logs here
+                v1.2 - view update logs here
               </button>
             </>
           )}
@@ -60,6 +60,17 @@ export default function Modal({ isVisible, onClose }: ModalProps) {
           {view == "updates" && (
             <>
               <p className="font-bold text-xl text-center">Update Logs</p>
+              <p>
+                v1.2: Added 9 new songs. Added a toggle in Endless Mode to
+                include/not include songs from national finals that didn't make
+                it to the contest into the song pool, adding an extra challenge
+                for those who also follow national finals. Songs are categorised
+                by the year they were intending to participate for in the
+                contest, not the year their national final was held (e.g.
+                Albania and Montenegro hold their national finals the year
+                before the main contest). There are currently 10 songs in the
+                national final song pool.
+              </p>
               <p>
                 v1.1: Added endless mode: you can now practise forever. Added
                 statistics for daily guesses (endless mode does not affect

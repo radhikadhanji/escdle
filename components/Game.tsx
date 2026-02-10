@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import MusicPlayer from "@/components/MusicPlayer";
 import Statistics from "@/components/Statistics";
 import { songs } from "@/data/songs";
+import { nfsongs } from "@/data/nfsongs";
 import { recordGame } from "@/data/stats";
 
 export default function Game() {
@@ -16,6 +17,7 @@ export default function Game() {
   const [timeLeft, setTimeLeft] = useState<string>("");
   const [finalGuesses, setFinalGuesses] = useState<number | null>(null);
   const [showStats, setShowStats] = useState(false);
+  const [nfSongsIncluded, setNfSongsIncluded] = useState(false);
   const inputDisabled = revealed || correct || playedToday;
   const START = new Date("2026-01-01");
   type GameMode = "daily" | "endless";
@@ -48,6 +50,10 @@ export default function Game() {
   }, [mode, playedToday]);
 
   if (!song) return null;
+
+  function handleCheckbox(event: React.ChangeEvent<HTMLInputElement>) {
+    setNfSongsIncluded(event.target.checked);
+  }
 
   function updateLastGame() {
     const now = new Date().toDateString();
@@ -94,9 +100,16 @@ export default function Game() {
 
   function getEndlessSong(excludeId?: string) {
     let next;
-    do {
-      next = songs[Math.floor(Math.random() * songs.length)];
-    } while (next.id === excludeId);
+    if (nfSongsIncluded === true) {
+      do {
+        let allSongs = songs.concat(nfsongs);
+        next = allSongs[Math.floor(Math.random() * allSongs.length)];
+      } while (next.id === excludeId);
+    } else {
+      do {
+        next = songs[Math.floor(Math.random() * songs.length)];
+      } while (next.id === excludeId);
+    }
     return next;
   }
 
@@ -206,15 +219,30 @@ export default function Game() {
       )}
 
       {mode === "endless" && (
-        <a
-          className="mt-4 font-bold p-2 outline"
-          onClick={() => {
-            setMode("daily");
-            resetGame(getDailySong());
-          }}
-        >
-          switch to daily mode
-        </a>
+        <>
+          <div className="mb-5">
+            <label htmlFor="myCheckbox" style={{ cursor: "pointer" }}>
+              <input
+                className="mr-2"
+                type="checkbox"
+                id="myCheckbox"
+                name="myCheckboxName"
+                checked={nfSongsIncluded}
+                onChange={handleCheckbox}
+              />
+              include national final songs
+            </label>
+          </div>
+          <a
+            className="mt-4 font-bold p-2 outline"
+            onClick={() => {
+              setMode("daily");
+              resetGame(getDailySong());
+            }}
+          >
+            switch to daily mode
+          </a>
+        </>
       )}
 
       {revealed && (

@@ -262,5 +262,77 @@ export const songs = [
         year: 2009,
         country: "Turkey",
         audio: "https://soundcloud.com/hadise-sc/duem-tek-tek"
+    },
+    {
+        id: "ridnym",
+        title: "Ridnym",
+        artist: "LELÉKA",
+        year: 2026,
+        country: "Ukraine",
+        audio: "https://soundcloud.com/fouzzie/leleka-ridnym"
+    },
+    {
+       id: "solovey",
+       title: "Solovey",
+       artist: "Go/A",
+       year: 2020,
+       country: "Ukraine",
+       audio: "https://soundcloud.com/ukrainian-music-7777/go_a-solovey" 
+    },
+    {
+        id: "wasted love",
+        title: "Wasted Love",
+        artist: "JJ",
+        year: 2025,
+        country: "Austria",
+        audio: "https://soundcloud.com/jj56776/wasted-love"
+    },
+    {
+        id: "asteromata",
+        title: "Asteromata",
+        artist: "Klavdia",
+        year: 2025,
+        country: "Greece",
+        audio: "https://soundcloud.com/klavdia-music/asteromata"
+    },
+    {
+        id: "waterloo",
+        title: "Waterloo",
+        artist: "ABBA",
+        year: 1974,
+        country: "Sweden",
+        audio: "https://soundcloud.com/abba-official/waterloo",
+    },
+    {
+        id: "ne partez pas sans moi",
+        title: "Ne Partez Pas Sans Moi",
+        artist: "Céline Dion",
+        year: 1988,
+        country: "Switzerland",
+        audio: "https://soundcloud.com/celinedionofficial/ne-partez-pas-sans-moi-grand"
+    },
+    {
+        id: "espresso macchiato",
+        title: "Espresso Macchiato",
+        artist: "Tommy Cash",
+        year: 2025,
+        country: "Estonia",
+        audio: "https://soundcloud.com/iamtommycash/espresso-macchiato"
+    },
+    {
+        id: "tattoo",
+        title: "Tattoo",
+        artist: "Loreen",
+        year: 2023,
+        country: "Sweden",
+        audio: "https://soundcloud.com/loreen-official/tattoo"
+    },
+    {
+        id: "slomo",
+        Title: "Slomo",
+        artist: "Chanel",
+        year: 2022,
+        country: "Spain",
+        audio: "https://soundcloud.com/chanel-official/slomo"
     }
 ];
