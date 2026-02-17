@@ -27,3 +27,11 @@ a{
   cursor: pointer;
 }
 
+.autoComplete_wrapper mark {
+  background: white;
+  color: black;
+  padding: 2px;
+}
+
+
+

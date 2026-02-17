@@ -78,5 +78,46 @@ export const nfsongs = [
         year: 2026,
         country: "Ukraine (7th place in NF)",
         audio: "https://soundcloud.com/fouzzie/the-elliens-crawling-whispers"
+    },
+    {
+        id: "slave",
+        title: "Slave",
+        artist: "OLLIE",
+        year: 2026,
+        country: "Estonia (3rd place in NF)",
+        audio: "https://soundcloud.com/olliewoodollie/slave"
+    },
+    {
+        id: "paréa",
+        title: "PARÉA",
+        artist: "Evangelia",
+        year: 2026,
+        country: "Greece (4th place in NF)",
+        audio: "https://soundcloud.com/evangeliamusic/parea"
+    }, 
+    {
+        id: "karnaval",
+        title: "Karnaval",
+        artist: "Elvana Gjata",
+        year: 2025,
+        country: "Albania (2nd place in NF)",
+        audio: "https://soundcloud.com/elvanagjata-music/karnaval-radio-edit"
+    },
+    {
+        id: "lightkeeper",
+        title: "Lightkeeper",
+        artist: "LAUD",
+        year: 2026,
+        country: "Ukraine (2nd place in NF)",
+        audio: "https://soundcloud.com/fouzzie/laud-lightkeeper"
+    },
+    {
+        id: "catharticus",
+        title: "CATHARTICUS",
+        artist: "Jerry Heil",
+        year: 2026, 
+        country: "Ukraine (3rd place in NF)",
+        audio: "https://soundcloud.com/jerryheil-sc/catharticus-prayer1"
     }
+    
 ];

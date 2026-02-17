@@ -38,9 +38,8 @@ export default function Modal({ isVisible, onClose }: ModalProps) {
               <p className="font-bold">
                 Titles are not case sensitive unless made up of multiple words,
                 e.g. Cha Cha Cha and cha cha cha are both valid guesses, but Cha
-                cha Cha is not. Do not include accents in your guesses, e.g.
-                guess Roa instead of Róa. Support for accented guesses will be
-                added in a later update.
+                cha Cha is not. Any accents in the song title need to be in your
+                guess, you can use the autocomplete to help you guess.
               </p>
 
               <p>
@@ -52,7 +51,7 @@ export default function Modal({ isVisible, onClose }: ModalProps) {
                 className="font-bold underline"
                 onClick={() => setView("updates")}
               >
-                v1.2 - view update logs here
+                v1.3 - view update logs here
               </button>
             </>
           )}
@@ -60,6 +59,12 @@ export default function Modal({ isVisible, onClose }: ModalProps) {
           {view == "updates" && (
             <>
               <p className="font-bold text-xl text-center">Update Logs</p>
+              <p>
+                v1.3: Added autocomplete with the help of the autoComplete.js
+                library. Changed all songs to include their accents if they had
+                any. Fixed minor blank song title bug. Added 13 new songs and 5
+                new national final songs.
+              </p>
               <p>
                 v1.2: Added 9 new songs. Added a toggle in Endless Mode to
                 include/not include songs from national finals that didn't make

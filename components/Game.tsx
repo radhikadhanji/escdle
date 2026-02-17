@@ -6,6 +6,8 @@ import Statistics from "@/components/Statistics";
 import { songs } from "@/data/songs";
 import { nfsongs } from "@/data/nfsongs";
 import { recordGame } from "@/data/stats";
+// @ts-ignore
+import autoComplete from "@tarekraafat/autocomplete.js";
 
 export default function Game() {
   const [guesses, setGuesses] = useState<string[]>([]);
@@ -48,6 +50,37 @@ export default function Game() {
     }, 1000);
     return () => clearInterval(interval);
   }, [mode, playedToday]);
+
+  useEffect(() => {
+    if (!song) return;
+
+    const input = document.querySelector("#autoComplete");
+    if (!input) return;
+
+    const allSongs = nfSongsIncluded ? songs.concat(nfsongs) : songs;
+
+    const autoCompleteJS = new autoComplete({
+      selector: "#autoComplete",
+      data: {
+        src: allSongs.map((song) => `${song.title} — ${song.artist}`),
+        cache: true,
+      },
+      resultItem: {
+        highlight: true,
+      },
+      events: {
+        input: {
+          selection: (event: any) => {
+            const full = event.detail.selection.value;
+            const title = full.split(" — ")[0];
+            setInput(title);
+          },
+        },
+      },
+    });
+
+    return () => autoCompleteJS.unInit();
+  }, [nfSongsIncluded, song]);
 
   if (!song) return null;
 
@@ -169,8 +202,10 @@ export default function Game() {
 
       <input
         type="text"
+        id="autoComplete"
+        name="autoComplete"
         placeholder="Enter your guess here"
-        className="w-full mb-4 rounded border px-3 py-2"
+        className="w-full mb-4 rounded border px-3 py-2 text-white"
         value={input}
         onChange={(e) => setInput(e.target.value)}
         disabled={inputDisabled}

@@ -32,8 +32,8 @@ export const songs = [
         audio: "https://soundcloud.com/kalush-orchestra/stefania-1"
     },
     {
-        id: "voila",
-        title: "Voila",
+        id: "voilà",
+        title: "Voilà",
         artist: "Barbara Pravi",
         year: 2021,
         country: "France",
@@ -89,7 +89,7 @@ export const songs = [
     },
     {
         id: "nan",
-        title: "Nan",
+        title: "Nân",
         artist: "Alis",
         year: 2026,
         country: "Albania",
@@ -120,8 +120,8 @@ export const songs = [
         audio: "https://soundcloud.com/who-see-official/igranka"
     },
     {
-        id: "la poupee monte le son",
-        title: "La Poupee Monte Le Son",
+        id: "la poupée monte le son",
+        title: "La Poupée Monte Le Son",
         artist: "Laura Thorn",
         year: 2025,
         country: "Luxembourg",
@@ -152,8 +152,8 @@ export const songs = [
         audio: "https://soundcloud.com/ruslana-official/wild-dances"
     },
     {
-        id: "roa",
-        title: "Roa",
+        id: "róa",
+        title: "RÓA",
         artist: "VAEB",
         year: 2025,
         country: "Iceland",
@@ -329,10 +329,114 @@ export const songs = [
     },
     {
         id: "slomo",
-        Title: "Slomo",
+        title: "Slomo",
         artist: "Chanel",
         year: 2022,
         country: "Spain",
         audio: "https://soundcloud.com/chanel-official/slomo"
+    },
+    {
+        id: "maman",
+        title: "Maman",
+        artist: "Louane",
+        year: 2025,
+        country: "France",
+        audio: "https://soundcloud.com/louane-official/maman-1"
+    },
+    {
+        id: "rim tim tagi dim",
+        title: "Rim Tim Tagi Dim",
+        artist: "Baby Lasagna",
+        year: 2024,
+        country: "Croatia",
+        audio: "https://soundcloud.com/babylasagna/rim-tim-tagi-dim"
+    },
+    {
+        id: "hallucination",
+        title: "Hallucination",
+        artist: "Sissal",
+        year: 2025,
+        country: "Denmark",
+        audio: "https://soundcloud.com/sissaljo-music/hallucination"
+    },
+    {
+        id: "jalla",
+        title: "Jalla",
+        artist: "Antigoni",
+        year: 2026,
+        country: "Cyprus",
+        audio: "https://soundcloud.com/antigoni-music/jalla"
+    },
+    {
+        id: "milkshake man",
+        title: "Milkshake Man",
+        artist: "Go-Jo",
+        year: 2025,
+        country: "Australia",
+        audio: "https://soundcloud.com/anzhelika-tixonova/go-jo-milkshake-man-mp3"
+    },
+    {
+        id: "arcade",
+        title: "Arcade",
+        artist: "Duncan Laurence",
+        year: 2019,
+        country: "Netherlands",
+        audio: "https://soundcloud.com/duncanlaurence-music/arcade"
+    },
+    {
+        id: "the code",
+        title: "The Code",
+        artist: "Nemo",
+        year: 2024,
+        country: "Switzerland",
+        audio: "https://soundcloud.com/nemothings/the-code"
+    },
+    {
+        id: "amar pelos dois",
+        title: "Amar Pelos Dois",
+        artist: "Salvador Sobral",
+        year: 2017,
+        country: "Portugal",
+        audio: "https://soundcloud.com/eurovisionsoundtrack/amar-pelos-dois"
+    },
+    {
+        id: "heroes",
+        title: "Heroes",
+        artist: "Måns Zelmerlöw",
+        year: 2015,
+        country: "Sweden",
+        audio: "https://soundcloud.com/mans-zelmerlow/heroes"
+    },
+    {
+        id: "soldi",
+        title: "Soldi",
+        artist: "Mahmood",
+        year: 2019,
+        country: "Italy",
+        audio: "https://soundcloud.com/mahmoodofficial/soldi"
+    },
+    {
+        id: "hatriõ mun sigra",
+        title: "Hatriõ Mun Sigra",
+        artist: "Hatari",
+        year: 2019,
+        country: "Iceland",
+        audio: "https://soundcloud.com/hatari-sc/hatri-mun-sigra"
+    },
+    {
+        id: "trenuletul",
+        title: "Trenulețul",
+        artist: "Zdob și Zdub & Fratii Advahov",
+        year: 2022,
+        country: "Moldova",
+        audio: "https://soundcloud.com/zdob-si-zdub-official/trenule-ul"
+    },
+    {
+        id: "in corpore sano",
+        title: "In Corpore Sano",
+        artist: "Konstrakta",
+        year: 2022,
+        country: "Serbia",
+        audio: "https://soundcloud.com/konstrakta-scmusic/in-corpore-sano-eurovision"
     }
 ];

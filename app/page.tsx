@@ -13,6 +13,7 @@ export default function Home() {
         src="https://w.soundcloud.com/player/api.js"
         strategy="beforeInteractive"
       />
+
       <button
         className="fixed top-10 left-10 p-4"
         onClick={() => setShowModal(true)}
